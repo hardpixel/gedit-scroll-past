@@ -1,0 +1,9 @@
+[Plugin]
+Module=scroll_past
+Loader=python3
+IAge=3
+Name=Scroll Past
+Description=Scroll past the end of documents.
+Authors=Jonian Guveli <jonian@hardpixel.eu>
+Copyright=Copyright © 2016 Hardpixel
+Website=http://hardpixel.eu
