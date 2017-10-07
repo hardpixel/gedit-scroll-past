@@ -8,26 +8,26 @@ from gi.repository import GObject, Gdk, Gtk, Gedit
 
 class ScrollPastAppActivatable(GObject.Object, Gedit.AppActivatable):
 
-	app = GObject.property(type=Gedit.App)
+  app = GObject.property(type=Gedit.App)
 
-	def __init__(self):
-		GObject.Object.__init__(self)
+  def __init__(self):
+    GObject.Object.__init__(self)
 
-		self._style_provider = Gtk.CssProvider()
-		self._current_screen = Gdk.Screen.get_default()
+    self._style_provider = Gtk.CssProvider()
+    self._current_screen = Gdk.Screen.get_default()
 
-	def do_activate(self):
-		css = b""".gedit-view { padding-bottom: 400px }"""
-		self._style_provider.load_from_data(css)
+  def do_activate(self):
+    css = b""".gedit-view { padding-bottom: 400px }"""
+    self._style_provider.load_from_data(css)
 
-		Gtk.StyleContext.add_provider_for_screen(
-			self._current_screen,
-			self._style_provider,
-			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-		)
+    Gtk.StyleContext.add_provider_for_screen(
+      self._current_screen,
+      self._style_provider,
+      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+    )
 
-	def do_deactivate(self):
-		Gtk.StyleContext.remove_provider_for_screen(
-			self._current_screen,
-			self._style_provider
-		)
+  def do_deactivate(self):
+    Gtk.StyleContext.remove_provider_for_screen(
+      self._current_screen,
+      self._style_provider
+    )
