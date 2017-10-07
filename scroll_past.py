@@ -13,10 +13,13 @@ class ScrollPastAppActivatable(GObject.Object, Gedit.AppActivatable):
   def __init__(self):
     GObject.Object.__init__(self)
 
+    self._style_provider = None
+    self._current_screen = None
+
+  def do_activate(self):
     self._style_provider = Gtk.CssProvider()
     self._current_screen = Gdk.Screen.get_default()
 
-  def do_activate(self):
     css = b""".gedit-view { padding-bottom: 400px }"""
     self._style_provider.load_from_data(css)
 
